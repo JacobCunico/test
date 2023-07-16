@@ -1,11 +1,13 @@
 const express = require('express');
 const morgan = require('morgan');
 const router = require('./api');
+const cors = require('cors');
 const {client} = require('./db/client');
 
 const app = express();
 const PORT = 3000;
 
+app.use(cors());
 // logging middleware
 app.use(morgan('dev'));
 
