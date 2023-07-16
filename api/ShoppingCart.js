@@ -23,6 +23,7 @@ cartRouter.get("/", async (req, res, next) => {
 
 cartRouter.post("/", async (req, res, next) => {
     const {shoppingId, productId, quantity} = req.body;
+    console.log("API ROUTER")
     try{
         const newItem = await addToCart({
             shoppingId: shoppingId, 
