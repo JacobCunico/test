@@ -6,8 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "seed:dev": "nodemon ./BackEnd/db/Seed.js",
-    "start": "react-scripts start",
-    "start:dev": "nodemon ./BackEnd/app.js"
+    "start": "node app.js",
+    "start:dev": "nodemon ./BackEnd/app.js",
+    "seed": "node db/Seed.js"
   },
   "keywords": [],
   "author": "",
