@@ -24,7 +24,10 @@ cartRouter.get("/", async (req, res, next) => {
 cartRouter.post("/", async (req, res, next) => {
     const {shoppingId, productId, quantity} = req.body;
     try{
-        const newItem = await addToCart(shoppingId, productId, quantity);
+        const newItem = await addToCart({
+            shoppingId: shoppingId, 
+            productId: productId, 
+            quantity: quantity});
         res.send(newItem)
     } catch (error) {
         next(error)
