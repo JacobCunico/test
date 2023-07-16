@@ -11,7 +11,7 @@ cartRouter.use('*', (req, res, next) => {
     next();
 });
 
-cartRouter.get("/", async (req, res, next) => {
+cartRouter.get("/cart", async (req, res, next) => {
     console.log("API ROUTER")
     const {id} = req.params;
     try{
