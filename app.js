@@ -11,6 +11,8 @@ app.use(cors());
 // logging middleware
 app.use(morgan('dev'));
 
+app.use(express.json());
+
 // Passing any request that fuzzy-matches '/api' to the api router
 app.use('/api', router);
 
