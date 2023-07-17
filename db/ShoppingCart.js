@@ -20,7 +20,7 @@ async function getCart(userId) {
     try{
 
     const {rows: [usercart] } = await client.query(`
-        SELECT cartId from shoppingCart
+        SELECT "cartId" from shoppingCart
         WHERE "ownerId" = $1
     `, [userId])
 

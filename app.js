@@ -3,9 +3,9 @@ const morgan = require('morgan');
 const router = require('./api');
 const cors = require('cors');
 const {client} = require('./db/client');
+const PORT = process.env.PORT || 3000;
 
 const app = express();
-const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 // logging middleware
