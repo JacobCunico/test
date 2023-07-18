@@ -51,6 +51,19 @@ async function createInitialProducts() {
         ON CONFLICT (title) DO NOTHING
         RETURNING *;
     `, ["Broken train", "Train missing a wheel", 1]);
+    await client.query(`
+    INSERT INTO products (title, description, price)
+        VALUES ($1, $2, $3)
+        ON CONFLICT (title) DO NOTHING
+        RETURNING *;
+    `, ["Spare Wheel", "A wheel that fell off of a train", 2]);
+    await client.query(`
+    INSERT INTO products (title, description, price)
+        VALUES ($1, $2, $3)
+        ON CONFLICT (title) DO NOTHING
+        RETURNING *;
+    `, ["Squirt gun", "A squirt gun that only shoots foam bullets", 5]);
+
     console.log("FINISHED CREATING INITIAL PRODUCTS")
   } catch(error) {
     console.log("ERROR CREATING INTITAL PRODUCTS", error);
