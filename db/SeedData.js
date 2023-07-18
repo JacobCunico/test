@@ -42,6 +42,21 @@ async function createTables() {
   console.log("error building tables", error);
 }}
 
+async function createInitialProducts() {
+  try{
+    console.log('CREATING INTITIAL PRODUCTS');
+    await client.query(`
+    INSERT INTO products (title, description, price)
+        VALUES ($1, $2, $3)
+        ON CONFLICT (title) DO NOTHING
+        RETURNING *;
+    `, ["Broken train", "Train missing a wheel", "1.50"]);
+    console.log("FINISHED CREATING INITIAL PRODUCTS")
+  } catch(error) {
+    console.log("ERROR CREATING INTITAL PRODUCTS", error);
+  }
+};
+
 async function rebuildDB() {
   try {
     await dropTables();
