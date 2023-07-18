@@ -10,6 +10,11 @@ const {
 
 const productsRouter = express.Router();
 
+productsRouter.use('*', (req, res, next) => {
+    console.log("REACHING PRODUCTS ROUTER");
+    next();
+});
+
 productsRouter.get("/", async (req, res, next) => {
   try {
     const products = await getAllProducts();
