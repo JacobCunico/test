@@ -3,7 +3,7 @@ const morgan = require('morgan');
 const router = require('./api');
 const cors = require('cors');
 const {client} = require('./db/client');
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 const app = express();
 
@@ -12,6 +12,11 @@ app.use(cors());
 app.use(morgan('dev'));
 
 app.use(express.json());
+
+app.use('*', (req, res, next) => {
+  res.send('THis should come back')
+  next()
+})
 
 // Passing any request that fuzzy-matches '/api' to the api router
 app.use('/api', router);
