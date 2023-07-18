@@ -50,7 +50,7 @@ async function createInitialProducts() {
         VALUES ($1, $2, $3)
         ON CONFLICT (title) DO NOTHING
         RETURNING *;
-    `, ["Broken train", "Train missing a wheel", "1.50"]);
+    `, ["Broken train", "Train missing a wheel", 1]);
     console.log("FINISHED CREATING INITIAL PRODUCTS")
   } catch(error) {
     console.log("ERROR CREATING INTITAL PRODUCTS", error);
