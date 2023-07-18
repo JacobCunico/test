@@ -24,8 +24,7 @@ async function getAllProducts() {
 
     return rows;
   } catch (error) {
-    console.log("Error in getAllProducts");
-    throw error;
+    console.log("Error in getAllProducts", error);
   }
 }
 
