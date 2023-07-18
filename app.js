@@ -13,11 +13,6 @@ app.use(morgan('dev'));
 
 app.use(express.json());
 
-app.use('*', (req, res, next) => {
-  res.send('THis should come back')
-  next()
-})
-
 // Passing any request that fuzzy-matches '/api' to the api router
 app.use('/api', router);
 
