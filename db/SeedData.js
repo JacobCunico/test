@@ -62,7 +62,7 @@ async function createInitialProducts() {
         VALUES ($1, $2, $3)
         ON CONFLICT (title) DO NOTHING
         RETURNING *;
-    `, ["Squirt gun", "A squirt gun that only shoots foam bullets", 5]);
+    `, ["Squirt gun", "A gun that only shoots foam bullets", 5]);
     await client.query(`
     INSERT INTO products (title, description, price)
         VALUES ($1, $2, $3)
