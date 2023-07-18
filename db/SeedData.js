@@ -70,6 +70,19 @@ async function createInitialUsers() {
     console.log("ERROR CREATING INTITAL USERS", error);
   }
 };
+async function createInitialCart() {
+  try{
+    console.log('CREATING INTITIAL CART');
+    await client.query(`
+    INSERT INTO shoppingCart ("ownerId")
+        VALUES ($1)
+        RETURNING *;
+    `, [1]);
+    console.log("FINISHED CREATING INITIAL CART")
+  } catch(error) {
+    console.log("ERROR CREATING INTITAL CART", error);
+  }
+};
 
 async function rebuildDB() {
   try {
@@ -77,6 +90,7 @@ async function rebuildDB() {
     await createTables();
     await createInitialProducts();
     await createInitialUsers();
+    await createInitialCart();
   } catch (error) {
     console.log("Error during rebuildDB", error);
   }
