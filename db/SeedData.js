@@ -32,9 +32,9 @@ async function createTables() {
       );
       CREATE TABLE cartItems(
         "cartItemId" SERIAL PRIMARY KEY,
-        "shoppingId" INTEGER REFERENCES shoppingCart ( "cartId" ) NOT NULL,
-        "itemId" INTEGER REFERENCES products ( "productId" ) NOT NULL,
-        quantity INTEGER NOT NULL
+        "shoppingId" INTEGER REFERENCES shoppingCart ( "cartId" ),
+        "itemId" INTEGER REFERENCES products ( "productId" ),
+        quantity INTEGER
     );
     `);
     console.log("finished building tables")
