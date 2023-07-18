@@ -1,4 +1,4 @@
-const client = require("./client");
+const {client} = require("./client");
 
 async function createProduct({ title, description, price }) {
   const {
@@ -14,7 +14,7 @@ async function createProduct({ title, description, price }) {
   );
 
   return product;
-}
+};
 
 async function getAllProducts() {
   try {
@@ -26,7 +26,7 @@ async function getAllProducts() {
   } catch (error) {
     console.log("Error in getAllProducts", error);
   }
-}
+};
 
 async function getProductById(productId) {
   try {
@@ -45,7 +45,7 @@ async function getProductById(productId) {
     console.log("Error in getProductById");
     throw error;
   }
-}
+};
 
 async function getProductByTitle(title) {
   try {
@@ -64,7 +64,7 @@ async function getProductByTitle(title) {
     console.log("Error in getProductByTitle");
     throw error;
   }
-}
+};
 
 async function updateProduct({ productId, ...fields }) {
   const setString = Object.keys(fields)
@@ -91,7 +91,7 @@ async function updateProduct({ productId, ...fields }) {
     console.log("Error in updateProduct");
     throw error;
   }
-}
+};
 
 async function deleteProduct(productId) {
   try {
@@ -110,7 +110,7 @@ async function deleteProduct(productId) {
   } catch (error) {
     console.log("Error in deleteProduct");
   }
-}
+};
 
 module.exports = {
   createProduct,
