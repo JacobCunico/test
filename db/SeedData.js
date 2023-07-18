@@ -56,12 +56,27 @@ async function createInitialProducts() {
     console.log("ERROR CREATING INTITAL PRODUCTS", error);
   }
 };
+async function createInitialUsers() {
+  try{
+    console.log('CREATING INTITIAL USERS');
+    await client.query(`
+    INSERT INTO users (username, password)
+        VALUES ($1, $2)
+        ON CONFLICT (username) DO NOTHING
+        RETURNING *;
+    `, ["username", "password"]);
+    console.log("FINISHED CREATING INITIAL USERS")
+  } catch(error) {
+    console.log("ERROR CREATING INTITAL USERS", error);
+  }
+};
 
 async function rebuildDB() {
   try {
     await dropTables();
     await createTables();
     await createInitialProducts();
+    await createInitialUsers();
   } catch (error) {
     console.log("Error during rebuildDB", error);
   }
