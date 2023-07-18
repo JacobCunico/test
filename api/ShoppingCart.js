@@ -27,9 +27,9 @@ cartRouter.post("/", async (req, res, next) => {
     console.log("POST ROUTER")
     try{
         const newItem = await addToCart({
-            shoppingId: shoppingId, 
-            productId: productId, 
-            quantity: quantity});
+            shoppingId: 1, 
+            productId: 1, 
+            quantity: 1});
         res.send(newItem)
     } catch (error) {
         next(error)
