@@ -61,6 +61,7 @@ async function rebuildDB() {
   try {
     await dropTables();
     await createTables();
+    await createInitialProducts();
   } catch (error) {
     console.log("Error during rebuildDB", error);
   }
