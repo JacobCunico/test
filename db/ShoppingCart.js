@@ -25,10 +25,11 @@ async function getCart(userId) {
     `, [userId])
 
     const {rows: shoppingCart } = await client.query(`
-    SELECT *
+    SELECT cartItems.*, products.*
     FROM cartItems
-    WHERE "shoppingId" = $1
-    `, [usercart]);
+    INNER JOIN products ON products."productId" = cartItems."itemId"
+    WHERE "shoppingId" = $1;
+    `, [usercart.cartId]);
     
     console.log("shopping cart", shoppingCart);
 

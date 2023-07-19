@@ -86,7 +86,7 @@ async function createInitialProducts() {
         VALUES ($1, $2, $3)
         ON CONFLICT (title) DO NOTHING
         RETURNING *;
-    `, ["Rock paper scissors instruction book", "Rules for Rock Paper Scisors", 7]);
+    `, ["Rock paper scissors instruction book", "Rules for the game", 7]);
     console.log("FINISHED CREATING INITIAL PRODUCTS")
   } catch(error) {
     console.log("ERROR CREATING INTITAL PRODUCTS", error);

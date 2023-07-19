@@ -1,9 +1,10 @@
+require("dotenv").config();
 const express = require('express');
 const morgan = require('morgan');
 const router = require('./api');
 const cors = require('cors');
 const {client} = require('./db/client');
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3002;
 
 const app = express();
 
