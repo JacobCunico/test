@@ -48,14 +48,29 @@ async function deleteItem(id) {
             RETURNING *;
         `, [id]);
         console.log("DELETE", newItems);
-        return newItems
     } catch(error) {
         console.log(error);
     }
 }
 
+async function createUserCart(userId) {
+    try{
+      console.log('CREATING USER CART');
+      const {rows: [userCart]} = await client.query(`
+      INSERT INTO shoppingCart ("ownerId")
+          VALUES ($1)
+          RETURNING *;
+      `, [userId]);
+      console.log("FINISHED CREATING USER CART");
+      return userCart;
+    } catch(error) {
+      console.log("ERROR CREATING USER CART", error);
+    }
+  };
+
 module.exports = {
     addToCart,
     getCart,
-    deleteItem
+    deleteItem,
+    createUserCart
 };

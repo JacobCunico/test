@@ -48,5 +48,9 @@ usersRouter.post('/login', async (req, res, next) => {
   }
 });
 
+usersRouter.get('/me', async (req, res, next) => {
+ console.log("FROM /ME", req.headers["Authorization"]
+ )
+})
 
 module.exports = usersRouter;

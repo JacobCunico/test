@@ -3,7 +3,8 @@ const cartRouter = express.Router();
 const {
     getCart,
     addToCart,
-    deleteItem
+    deleteItem,
+    createUserCart
 } = require("../db");
 
 cartRouter.use('*', (req, res, next) => {
@@ -36,14 +37,25 @@ cartRouter.post("/", async (req, res, next) => {
     }
 });
 
-cartRouter.delete("/:productId"), async (req, res, next) => {
+cartRouter.delete("/:productId", async (req, res, next) => {
     const {productId} = req.params;
+    console.log("TRYING TO DELETE")
     try{
         const removeItem = await deleteItem(productId);
         res.send(removeItem);
     } catch(error) {
         next(error);
     }
-};
+});
+
+cartRouter.post("/:userId", async (req, res, next) => {
+    const {userId} = req.params;
+    try{
+        const userCart = await createUserCart(userId);
+        res.send(userCart);
+    } catch(error) {
+        next(error);
+    }
+});
 
 module.exports = cartRouter;
